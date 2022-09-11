@@ -2,6 +2,8 @@
 
 `autodoc` is a simple document generator. It parses docstrings for any function & generates markdown document.
 
+> 👉 This is a very very lean & playground version of [go/doc](https://pkg.go.dev/go/doc) package.
+
 ---
 
 ## ❓ What is it?
