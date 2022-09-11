@@ -15,9 +15,14 @@ To understand, how to write function docstrings following the **_numpy docstring
 
 ## 🚀 Demo
 
-Clonning the repo & run the `main` file. It will loop through all the files in `src` directory & generate a markdown file for each source file & store it in the `docs` directory.
+Clone the repo & run the `main` script. 
+```bash
+go run main.go
+```
 
-In the repo, I have added 2 source files. Running the `main` script, created 2 new files in `docs` directory.
+It will loop through all the files in `src` directory & generate a markdown file for each source file & store it in the `docs` directory.
+
+In the repo, I have added 2 source files. Executing the `main` script, creates 2 new files in `docs` directory.
 
 ```bash
 .
@@ -29,15 +34,15 @@ In the repo, I have added 2 source files. Running the `main` script, created 2 n
     └── square_root.go
 ```
 
-Compare & check the docs file
+Checkout the generated docs
 
 ## 🤔 How?
 
 The `autodoc` exports a `DocGenerator` method that takes in a filepath & generates a markdown of the same name in docs file. It does this by -
 
-1. Reading the source file
-2. Generates the Abstract Syntax Tree for the source code
-3. Traverses the tree to find `function` nodes
+1. Reads the source file
+2. Generates the Abstract Syntax Tree for the source code using the excellent `go/parser` package
+3. Traverses the tree to find function nodes. `go/ast` stores them as [FuncDecl](https://pkg.go.dev/go/ast#FuncDecl) nodes. It relies on `go/ast` to inspect the tree
 4. Reads the docstring assosciated with it & the function name
 5. Formats it into a markdown representation
 6. Writes it to a file inside `docs`
